@@ -1,8 +1,13 @@
 let game = (playRound) => {
+  
+  let computerScore = 0;
+  let playerScore = 0;
+
+
   for (let i = 0; i < 5; i++) {
 
 
-    function getComputerChoice(max) { //generates a random number from 0-2 and assigns each number to rock, paper and scissors
+    function getComputerChoice(max) { //generates a random number from 0-2 (0 inclusive) and assigns each number to rock, paper and scissors
       let RNG = Math.floor(Math.random() * max);
 
       if (RNG == 0) {
@@ -14,36 +19,49 @@ let game = (playRound) => {
       }
     }
 
-    let playerChoice = prompt().toLowerCase(); //gets the players input/choice
+    let playerChoice = prompt().toLowerCase(); //gets the players input/choice and transforms characters to lowercase
+    
 
     function playRound(playerSelection, computerSelection) { //compares the player and computer's choice and decide who wins
+
       if (
         (playerSelection === "rock" && computerSelection === "paper") ||
-        (playerSelection === "paper" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "scissors") || //condition block where player loses
         (playerSelection === "scissors" && computerSelection === "rock")
       ) {
+        computerScore++;
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
-
       } else if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
-        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "paper" && computerSelection === "rock") || //condition block where player wins
         (playerSelection === "scissors" && computerSelection === "paper")
       ) {
+        playerScore++;
         return `You Win! ${playerSelection} beats ${computerSelection}`;
-
       } else {
-        return "It's a tie";
+        return "It's a tie"; //player and computer ties
       }
     }
 
-    let playerScore = 0;
+    // function getWinner() {
+    //   if (playerScore > computerScore) {
+    //     return `Congratulations! You beat the computer!`
+    //   } else if (computerScore > playerScore) {
+    //     return `Better luck next time.`
+    //   } else {
+    //     return `It's a tie!`
+    //   }
+    // }
+
+    
 
     const playerSelection = playerChoice;
     const computerSelection = getComputerChoice(3);
-    console.log(`Player chose ${playerSelection}`);
+    console.log(`You chose ${playerSelection}`);
     console.log(`Computer chose ${computerSelection}`);
     console.log(playRound(playerSelection, computerSelection));
-    console.log(playerScore)
+    console.log(playerScore, computerScore)
+    // console.log(getWinner())
   }
 }
 
