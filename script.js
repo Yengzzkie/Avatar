@@ -3,9 +3,7 @@ let game = (playRound) => {
   let computerScore = 0;
   let playerScore = 0;
 
-
   for (let i = 0; i < 5; i++) {
-
 
     function getComputerChoice(max) { //generates a random number from 0-2 (0 inclusive) and assigns each number to rock, paper and scissors
       let RNG = Math.floor(Math.random() * max);
@@ -43,26 +41,25 @@ let game = (playRound) => {
       }
     }
 
-    // function getWinner() {
-    //   if (playerScore > computerScore) {
-    //     return `Congratulations! You beat the computer!`
-    //   } else if (computerScore > playerScore) {
-    //     return `Better luck next time.`
-    //   } else {
-    //     return `It's a tie!`
-    //   }
-    // }
-
-    
-
     const playerSelection = playerChoice;
     const computerSelection = getComputerChoice(3);
     console.log(`You chose ${playerSelection}`);
     console.log(`Computer chose ${computerSelection}`);
     console.log(playRound(playerSelection, computerSelection));
     console.log(playerScore, computerScore)
-    // console.log(getWinner())
   }
+
+  function getWinner() {
+    if (playerScore > computerScore) {
+      return `Congratulations! You beat the computer!`;
+    } else if (computerScore > playerScore) {
+      return `Computer Won. Better luck next time.`;
+    } else {
+      return `It's a tie!`;
+    }
+  }
+   console.log(getWinner());
 }
+
 
 game();
