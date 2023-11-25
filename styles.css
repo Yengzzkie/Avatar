@@ -1,0 +1,107 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url(images/Frame\ 34-1920x1080-36ef20b459d50dbc0bf25fc9d86c8052.avif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: brightness(100%);
+  color: antiquewhite;
+}
+
+.circle-container {
+  -webkit-animation: mover 2s infinite alternate;
+  animation: mover 2s infinite alternate;
+  position: relative;
+  width: 24em;
+  height: 24em;
+  padding: 2.8em;
+  /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+  border-radius: 50%;
+  margin: 1.75em auto 0;
+}
+
+.circle-container img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4em;
+  height: 4em;
+  margin: -2em;
+}
+
+.circle-container .center {
+  width: 120px;
+  height: auto;
+  -webkit-filter: drop-shadow(0px 9px 7px #f5f5f3);
+  filter: drop-shadow(0px 9px 7px #f5f5f3);
+}
+
+.deg0 {
+  transform: translate(12em);
+  -webkit-filter: drop-shadow(0px 9px 7px #f80303);
+  filter: drop-shadow(0px 9px 7px #f80303);
+} /* 12em = half the width of the wrapper */
+.deg180 {
+  transform: translate(-12em);
+  -webkit-filter: drop-shadow(0px 9px 7px #038af8);
+  filter: drop-shadow(0px 9px 7px #038af8);
+}
+.deg225 {
+  transform: rotate(225deg) translate(12em) rotate(-225deg);
+  -webkit-filter: drop-shadow(0px 9px 7px #03f803);
+  filter: drop-shadow(0px 9px 7px #03f803);
+}
+.deg315 {
+  transform: rotate(315deg) translate(12em) rotate(-315deg);
+  -webkit-filter: drop-shadow(0px 9px 7px #ccf3cc);
+  filter: drop-shadow(0px 9px 7px #ccf3cc);
+}
+
+@-webkit-keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.scale-image {
+  transform: scale(1.5);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Style for the life bars */
+.life-bars {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.player-life-bar,
+.computer-life-bar {
+  width: 200px;
+  height: 20px;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+}
+
+.player-life,
+.computer-life {
+  height: 100%;
+  background-color: green; /* Initial color of the life bar */
+  transition: width 0.5s ease-in-out
+}

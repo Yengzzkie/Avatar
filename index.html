@@ -3,16 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
 
     <title>Papel, Gunting, Bato</title>
   </head>
   <body>
+    <div class="circle-container">
+      <img src="images/avatar.png" class="center" />
+      <img src="images/fire.png" class="deg0 fire grow" />
+      <img src="images/water.png" class="deg180 water grow" />
+      <img src="images/earth.png" class="deg225 earth grow" />
+      <img src="images/wind.png" class="deg315 wind grow" />
+    </div>
 
-    <button id="rock">Rock</button>
+    <div class="button-container">
+      <button id="fire">Fire</button>
 
-    <button id="paper">Paper</button>
+      <button id="water">Water</button>
 
-    <button id="scissors">Scissors</button>
+      <button id="earth">Earth</button>
+
+      <button id="wind">Wind</button>
+    </div>
+
+    <div class="life-bars">
+      <div class="player-life-bar">
+        <div class="player-life"></div>
+      </div>
+      <div class="computer-life-bar">
+        <div class="computer-life"></div>
+      </div>
+    </div>
+
+    <div id="container">
+      <h1></h1>
+      <p class="score"></p>
+      <p class="playerElement"></p>
+      <p class="aangElement"></p>
+      <p class="winner"></p>
+    </div>
 
     <script src="script.js" type="text/javascript"></script>
   </body>

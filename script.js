@@ -1,108 +1,195 @@
-let computerScore = 0;
-let playerScore = 0;
-let gameRound = 0;
+let container = document.querySelector("#container");
+let score = document.querySelector(".score");
+let h1 = document.querySelector("h1");
+let winner = document.querySelector(".winner");
+let playerElement = document.querySelector(".playerElement");
+let aangElement = document.querySelector(".aangElement");
 
-const rock = document.querySelector("#rock");
+let playerLifePercentage = 100;
+let computerLifePercentage = 100;
+// let computerScore = 0;
+// let playerScore = 0;
 
-rock.addEventListener("click", () => {
-  if (gameRound < 5) {
-    let playerChoice = "rock";
+const fire = document.querySelector("#fire");
+
+fire.addEventListener("click", () => {
+  if (playerLifePercentage > 0 || computerLifePercentage > 0) {
+    let playerChoice = "fire";
     let computerChoice = getComputerChoice();
-    console.log(`Player chose ${playerChoice}`);
-    console.log(`Computer chose ${computerChoice}`);
-    console.log(playRound(playerChoice, computerChoice));
-    gameRound++;
-    console.log(`Round ${gameRound}`);
-    if (gameRound === 5) {
-      console.log("Game Over!");
-      console.log(
-        `Final Scores - Player: ${playerScore} Computer: ${computerScore}`
-      );
-      console.log(getWinner(playerScore, computerScore));
+    playerElement.textContent = `You cast ${playerChoice}`;
+    aangElement.textContent = `Aang cast ${computerChoice}`;
+    winner.textContent = playRound(playerChoice, computerChoice);
+    if (playerLifePercentage === 0 || computerLifePercentage === 0) {
+      
+      setTimeout(() => {
+        playerElement.textContent = "";
+        aangElement.textContent = "";
+        h1.textContent = `Game Over!`;
+        winner.textContent = getWinner();
+      }, 1000);
     }
   }
 });
 
-const paper = document.querySelector("#paper");
+const water = document.querySelector("#water");
 
-paper.addEventListener("click", () => {
-  if (gameRound < 5) {
-    let playerChoice = "paper";
+water.addEventListener("click", () => {
+  if (playerLifePercentage > 0 || computerLifePercentage > 0) {
+    let playerChoice = "water";
     let computerChoice = getComputerChoice();
-    console.log(`Player chose ${playerChoice}`);
-    console.log(`Computer chose ${computerChoice}`);
-    console.log(playRound(playerChoice, computerChoice));
-    gameRound++;
-    console.log(`Round ${gameRound}`);
-    if (gameRound === 5) {
-      console.log("Game Over!");
-      console.log(
-        `Final Scores - Player: ${playerScore} Computer: ${computerScore}`
-      );
-      console.log(getWinner(playerScore, computerScore));
+    playerElement.textContent = `You cast ${playerChoice}`;
+    aangElement.textContent = `Aang cast ${computerChoice}`;
+    winner.textContent = playRound(playerChoice, computerChoice);
+    if (playerLifePercentage === 0 || computerLifePercentage === 0) {
+      setTimeout(() => {
+        playerElement.textContent = "";
+        aangElement.textContent = "";
+        h1.textContent = `Game Over!`;
+        winner.textContent = getWinner();
+      }, 1000);
     }
   }
 });
 
-const scissors = document.querySelector("#scissors");
+const earth = document.querySelector("#earth");
 
-scissors.addEventListener("click", () => {
-  if (gameRound < 5) {
-    let playerChoice = "scissors";
+earth.addEventListener("click", () => {
+  if (playerLifePercentage > 0 || computerLifePercentage > 0) {
+    let playerChoice = "earth";
     let computerChoice = getComputerChoice();
-    console.log(`Player chose ${playerChoice}`);
-    console.log(`Computer chose ${computerChoice}`);
-    console.log(playRound(playerChoice, computerChoice));
-    gameRound++;
-    console.log(`Round ${gameRound}`);
-    if (gameRound === 5) {
-      console.log("Game Over!");
-      console.log(
-        `Final Scores - Player: ${playerScore} Computer: ${computerScore}`
-      );
-      console.log(getWinner(playerScore, computerScore));
+    playerElement.textContent = `You cast ${playerChoice}`;
+    aangElement.textContent = `Aang cast ${computerChoice}`;
+    winner.textContent = playRound(playerChoice, computerChoice);
+    if (playerLifePercentage === 0 || computerLifePercentage === 0) {
+      setTimeout(() => {
+        playerElement.textContent = "";
+        aangElement.textContent = "";
+        h1.textContent = `Game Over!`;
+        winner.textContent = getWinner();
+      }, 1000);
+    }
+  }
+});
+
+const wind = document.querySelector("#wind");
+
+wind.addEventListener("click", () => {
+  if (playerLifePercentage > 0 || computerLifePercentage > 0) {
+    let playerChoice = "wind";
+    let computerChoice = getComputerChoice();
+    playerElement.textContent = `You cast ${playerChoice}`;
+    aangElement.textContent = `Aang cast ${computerChoice}`;
+    winner.textContent = playRound(playerChoice, computerChoice);
+    if (playerLifePercentage === 0 || computerLifePercentage === 0) {
+      setTimeout(() => {
+        playerElement.textContent = "";
+        aangElement.textContent = "";
+        h1.textContent = `Game Over!`;
+        winner.textContent = getWinner();
+      }, 1000);
     }
   }
 });
 
 function getComputerChoice() {
-  let RNG = Math.floor(Math.random() * 3);
+  let RNG = Math.floor(Math.random() * 4);
 
   if (RNG == 0) {
-    return "rock";
+    let computerImage = document.querySelector(".fire");
+
+    computerImage.classList.add("scale-image");
+
+    setTimeout(() => {
+      computerImage.classList.remove("scale-image");
+    }, 1500);
+    return "fire";
   } else if (RNG == 1) {
-    return "paper";
+    let computerImage = document.querySelector(".water");
+
+    computerImage.classList.add("scale-image");
+
+    setTimeout(() => {
+      computerImage.classList.remove("scale-image");
+    }, 1500);
+    return "water";
+  } else if (RNG == 2) {
+    let computerImage = document.querySelector(".earth");
+
+    computerImage.classList.add("scale-image");
+
+    setTimeout(() => {
+      computerImage.classList.remove("scale-image");
+    }, 1500);
+    return "earth";
   } else {
-    return "scissors";
+    let computerImage = document.querySelector(".wind");
+
+    computerImage.classList.add("scale-image");
+
+    setTimeout(() => {
+      computerImage.classList.remove("scale-image");
+    }, 1500);
+    return "wind";
   }
 }
 
 function playRound(playerSelection, computerSelection) {
   if (
-    (playerSelection === "rock" && computerSelection === "paper") ||
-    (playerSelection === "paper" && computerSelection === "scissors") ||
-    (playerSelection === "scissors" && computerSelection === "rock")
+    (playerSelection === "fire" && computerSelection === "earth") ||
+    (playerSelection === "earth" && computerSelection === "wind") ||
+    (playerSelection === "wind" && (computerSelection === "water" || computerSelection === "fire")) ||
+    (playerSelection === "water" && (computerSelection === "fire" || computerSelection === "earth"))
   ) {
-    computerScore++;
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
-  } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
-  ) {
-    playerScore++;
+    computerLifePercentage -= 10;
+    updateLifeBars();
     return `You Win! ${playerSelection} beats ${computerSelection}`;
+  } else if (
+    (playerSelection === "fire" && (computerSelection === "water" || computerSelection === "wind")) ||
+    (playerSelection === "earth" && (computerSelection === "fire" || computerSelection === "water")) ||
+    (playerSelection === "wind" && computerSelection === "earth") ||
+    (playerSelection === "water" && computerSelection === "wind")
+  ) {
+    playerLifePercentage -= 10;
+    updateLifeBars();
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else {
-    return "It's a tie";
+    return "No damage done";
   }
 }
 
-function getWinner(playerScore, computerScore) {
-  if (playerScore > computerScore) {
-    return `Congratulations! You beat the computer!`;
-  } else if (computerScore > playerScore) {
-    return `Computer Won. Better luck next time.`;
+function getWinner() {
+  if (playerLifePercentage > computerLifePercentage) {
+    return `Congratulations! You defeated Avatar Aang!`;
+  } else if (computerLifePercentage > playerLifePercentage) {
+    return `Avatar Aang Won. See you in next life.`;
   } else {
-    return `It's a tie!`;
+    return `Both benders fought a glorious fight!`;
   }
 }
+
+
+// Get references to the life bars and their inner life elements
+let playerLife = document.querySelector(".player-life");
+let computerLife = document.querySelector(".computer-life");
+
+// Function to update the life bars based on player and computer scores
+function updateLifeBars() {
+
+  // Update the width of the life bars based on the calculated percentages
+  playerLife.style.width = `${playerLifePercentage}%`;
+  computerLife.style.width = `${computerLifePercentage}%`;
+    console.log(playerLifePercentage);
+    console.log(computerLifePercentage);
+
+  if (playerLifePercentage <= 50) {
+    playerLife.style.backgroundColor = "red";
+  } else {
+    playerLife.style.backgroundColor = "green";
+  }
+
+  if (computerLifePercentage <= 50) {
+    computerLife.style.backgroundColor = "red";
+  } else {
+    computerLife.style.backgroundColor = "green";
+  }
+} 
