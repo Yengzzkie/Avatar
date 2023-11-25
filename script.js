@@ -7,12 +7,11 @@ let aangElement = document.querySelector(".aangElement");
 
 let playerLifePercentage = 100;
 let computerLifePercentage = 100;
-// let computerScore = 0;
-// let playerScore = 0;
 
 const fire = document.querySelector("#fire");
 
 fire.addEventListener("click", () => {
+  //code block for player Fire button
   if (playerLifePercentage > 0 || computerLifePercentage > 0) {
     let playerChoice = "fire";
     let computerChoice = getComputerChoice();
@@ -20,7 +19,6 @@ fire.addEventListener("click", () => {
     aangElement.textContent = `Aang cast ${computerChoice}`;
     winner.textContent = playRound(playerChoice, computerChoice);
     if (playerLifePercentage === 0 || computerLifePercentage === 0) {
-      
       setTimeout(() => {
         playerElement.textContent = "";
         aangElement.textContent = "";
@@ -34,6 +32,7 @@ fire.addEventListener("click", () => {
 const water = document.querySelector("#water");
 
 water.addEventListener("click", () => {
+  //code block for player Water button
   if (playerLifePercentage > 0 || computerLifePercentage > 0) {
     let playerChoice = "water";
     let computerChoice = getComputerChoice();
@@ -54,6 +53,7 @@ water.addEventListener("click", () => {
 const earth = document.querySelector("#earth");
 
 earth.addEventListener("click", () => {
+  //code block for player Earth button
   if (playerLifePercentage > 0 || computerLifePercentage > 0) {
     let playerChoice = "earth";
     let computerChoice = getComputerChoice();
@@ -74,6 +74,7 @@ earth.addEventListener("click", () => {
 const wind = document.querySelector("#wind");
 
 wind.addEventListener("click", () => {
+  //code block for player Wind button
   if (playerLifePercentage > 0 || computerLifePercentage > 0) {
     let playerChoice = "wind";
     let computerChoice = getComputerChoice();
@@ -92,6 +93,7 @@ wind.addEventListener("click", () => {
 });
 
 function getComputerChoice() {
+  //generates random number and assigns computer's option, also contains animation codes for computer options
   let RNG = Math.floor(Math.random() * 4);
 
   if (RNG == 0) {
@@ -134,22 +136,27 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  //major game logic, decides who wins per round
   if (
     (playerSelection === "fire" && computerSelection === "earth") ||
     (playerSelection === "earth" && computerSelection === "wind") ||
-    (playerSelection === "wind" && (computerSelection === "water" || computerSelection === "fire")) ||
-    (playerSelection === "water" && (computerSelection === "fire" || computerSelection === "earth"))
+    (playerSelection === "wind" &&
+      (computerSelection === "water" || computerSelection === "fire")) ||
+    (playerSelection === "water" &&
+      (computerSelection === "fire" || computerSelection === "earth"))
   ) {
     computerLifePercentage -= 10;
     updateLifeBars();
     return `You Win! ${playerSelection} beats ${computerSelection}`;
   } else if (
-    (playerSelection === "fire" && (computerSelection === "water" || computerSelection === "wind")) ||
-    (playerSelection === "earth" && (computerSelection === "fire" || computerSelection === "water")) ||
+    (playerSelection === "fire" &&
+      (computerSelection === "water" || computerSelection === "wind")) ||
+    (playerSelection === "earth" &&
+      (computerSelection === "fire" || computerSelection === "water")) ||
     (playerSelection === "wind" && computerSelection === "earth") ||
     (playerSelection === "water" && computerSelection === "wind")
   ) {
-    playerLifePercentage -= 10;
+    playerLifePercentage -= 10; //decrements life by 10 points
     updateLifeBars();
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else {
@@ -158,6 +165,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function getWinner() {
+  //concludes the game and displays the winner
   if (playerLifePercentage > computerLifePercentage) {
     return `Congratulations! You defeated Avatar Aang!`;
   } else if (computerLifePercentage > playerLifePercentage) {
@@ -167,21 +175,20 @@ function getWinner() {
   }
 }
 
-
 // Get references to the life bars and their inner life elements
 let playerLife = document.querySelector(".player-life");
 let computerLife = document.querySelector(".computer-life");
 
 // Function to update the life bars based on player and computer scores
 function updateLifeBars() {
-
   // Update the width of the life bars based on the calculated percentages
   playerLife.style.width = `${playerLifePercentage}%`;
   computerLife.style.width = `${computerLifePercentage}%`;
-    console.log(playerLifePercentage);
-    console.log(computerLifePercentage);
+  console.log(playerLifePercentage);
+  console.log(computerLifePercentage);
 
   if (playerLifePercentage <= 50) {
+    //changes the life bars to red when it reaches 50%
     playerLife.style.backgroundColor = "red";
   } else {
     playerLife.style.backgroundColor = "green";
@@ -192,4 +199,4 @@ function updateLifeBars() {
   } else {
     computerLife.style.backgroundColor = "green";
   }
-} 
+}
