@@ -136,6 +136,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  const damage = Math.floor(Math.random() * 21)
   //major game logic, decides who wins per round
   if (
     (playerSelection === "fire" && computerSelection === "earth") ||
@@ -145,9 +146,12 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "water" &&
       (computerSelection === "fire" || computerSelection === "earth"))
   ) {
-    computerLifePercentage -= 10;
+    if (computerLifePercentage < 0) {
+      computerLifePercentage = 0; //ensure computer life points doesn't go below 0 that may cause bug on playRound
+    }
+    computerLifePercentage -= damage;
     updateLifeBars();
-    return `You Win! ${playerSelection} beats ${computerSelection}`;
+    return `You Win! ${playerSelection} beats ${computerSelection}. You inflicted ${damage} damage points to Aang.`;
   } else if (
     (playerSelection === "fire" &&
       (computerSelection === "water" || computerSelection === "wind")) ||
@@ -156,9 +160,12 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "wind" && computerSelection === "earth") ||
     (playerSelection === "water" && computerSelection === "wind")
   ) {
-    playerLifePercentage -= 10; //decrements life by 10 points
+    if (playerLifePercentage < 0) { //ensures player life points doesn't go below 0 that may cause bug on playRound
+      playerLifePercentage = 0;
+    }
+    playerLifePercentage -= damage;
     updateLifeBars();
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    return `You Lose! ${computerSelection} beats ${playerSelection}. Aang inflicted ${damage} damage points to you.`;
   } else {
     return "No damage done";
   }
