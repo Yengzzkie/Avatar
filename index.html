@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="styles.css" rel="stylesheet" />
-
-    <title>Papel, Gunting, Bato</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap">
+    <title>Avatar</title>
   </head>
   <body>
     <div class="circle-container">
@@ -16,32 +16,48 @@
       <img src="images/wind.png" class="deg315 wind grow" />
     </div>
 
-    <div class="button-container">
-      <button id="fire">Fire</button>
-
-      <button id="water">Water</button>
-
-      <button id="earth">Earth</button>
-
-      <button id="wind">Wind</button>
-    </div>
-
     <div class="life-bars">
-      <div class="player-life-bar">
-        <div class="player-life"></div>
+      <div class="health-box">
+        <div class="health-bar-red"></div>
+        <div class="health-bar-blue"></div>
+        <div class="health-bar">
+          <div class="damage-number"></div>
+        </div>
+        <div class="health-bar-text">100%</div>
+        <h1>You</h1>
       </div>
-      <div class="computer-life-bar">
-        <div class="computer-life"></div>
+
+      <div class="comp-health-box">
+        <div class="comp-health-bar-red"></div>
+        <div class="comp-health-bar-blue"></div>
+        <div class="comp-health-bar">
+          <div class="comp-damage-number"></div>
+        </div>
+        <div class="comp-health-bar-text">100%</div>
+        <h1>Avatar Aang</h1>
       </div>
     </div>
 
-    <div id="container">
-      <h1></h1>
-      <p class="score"></p>
-      <p class="playerElement"></p>
-      <p class="aangElement"></p>
-      <p class="winner"></p>
-    </div>
+    <section class="medieval-section">
+
+      <div id="container">
+        <h1 class="game-over"></h1>
+        <p class="score"></p>
+        <h3 class="playerElement"></h3>
+        <h3 class="aangElement"></h3>
+        <h2 class="winner"></h2>
+      </div>
+
+      <div class="button-container">
+        <button id="fire">Fire</button>
+
+        <button id="water">Water</button>
+
+        <button id="earth">Earth</button>
+
+        <button id="wind">Wind</button>
+      </div>
+    </section>
 
     <script src="script.js" type="text/javascript"></script>
   </body>
