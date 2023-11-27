@@ -33,7 +33,7 @@ fire.addEventListener("click", () => {
         gameOver.textContent = `Game Over!`;
         winner.textContent = getWinner();
         endGame();
-      }, 2000);
+      }, 1500);
     }
   }
 });
@@ -50,13 +50,12 @@ water.addEventListener("click", () => {
     winner.textContent = playRound(playerChoice, computerChoice);
     if (playerLifePercentage === 0 || computerLifePercentage === 0) {
       setTimeout(() => {
-        aangContainer.classList.add(".computer-evaporate");
         playerElement.textContent = "";
         aangElement.textContent = "";
         gameOver.textContent = `Game Over!`;
         winner.textContent = getWinner();
         endGame();
-      }, 2000);
+      }, 1500);
     }
   }
 });
@@ -78,7 +77,7 @@ earth.addEventListener("click", () => {
         gameOver.textContent = `Game Over!`;
         winner.textContent = getWinner();
         endGame();
-      }, 2000);
+      }, 1500);
     }
   }
 });
@@ -100,7 +99,7 @@ wind.addEventListener("click", () => {
         gameOver.textContent = `Game Over!`;
         winner.textContent = getWinner();
         endGame();
-      }, 2000);
+      }, 1500);
     }
   }
 });
@@ -208,8 +207,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (damage >= 15) {
       return `Critical damage! Aang inflicted ${damage} damage points to you.`;
-    }
-
+    } 
     return `You Lose! ${computerSelection} beats ${playerSelection}. Aang inflicted ${damage} damage points to you.`;
   } else {
     return "No damage done";

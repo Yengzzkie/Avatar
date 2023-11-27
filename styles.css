@@ -19,25 +19,6 @@ body {
   margin: 1.75em auto 0;
 }
 
-.computer-evaporate {
-  animation: evaporate 1.5s ease-in-out;
-}
-
-@keyframes evaporate {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-}
-
 .circle-container img {
   display: block;
   position: absolute;
@@ -57,23 +38,19 @@ body {
 
 .deg0 {
   transform: translate(12em);
-  -webkit-filter: drop-shadow(0px 9px 7px #f80303);
-  filter: drop-shadow(0px 9px 7px #f80303);
+  filter: drop-shadow(0px 9px 7px rgb(1, 255, 255));
 } /* 12em = half the width of the wrapper */
 .deg180 {
   transform: translate(-12em);
-  -webkit-filter: drop-shadow(0px 9px 7px #038af8);
-  filter: drop-shadow(0px 9px 7px #038af8);
+  filter: drop-shadow(0px 9px 7px rgb(241, 2, 2));
 }
 .deg225 {
   transform: rotate(225deg) translate(12em) rotate(-225deg);
-  -webkit-filter: drop-shadow(0px 9px 7px #03f803);
-  filter: drop-shadow(0px 9px 7px #03f803);
+  filter: drop-shadow(0px 9px 7px rgb(3, 150, 248));
 }
 .deg315 {
   transform: rotate(315deg) translate(12em) rotate(-315deg);
-  -webkit-filter: drop-shadow(0px 9px 7px #ccf3cc);
-  filter: drop-shadow(0px 9px 7px #ccf3cc);
+  filter: drop-shadow(0px 9px 7px rgb(3, 231, 3));
 }
 
 @-webkit-keyframes mover {
@@ -97,7 +74,7 @@ body {
 }
 
 .scale-image {
-  animation: growAndEvap 0.6s ease-in-out;
+  animation: growAndEvap 0.8s ease-in-out;
 }
 
 @keyframes growAndEvap {
